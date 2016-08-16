@@ -16,3 +16,7 @@ pip install django-extensions
 
 # Create command
 python manage.py create_command core
+
+# Install model_mommy and names
+pip install model_mommy
+pip install names
