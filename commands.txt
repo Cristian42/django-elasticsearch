@@ -28,3 +28,9 @@ python manage.py dummy-data 10000
 # python manage.py shell_plus
 # Student.objects.count()
 # 10000
+
+## Part 3: Create model mapping and push data to elasticsearch index
+# https://qbox.io/blog/elasticsearch-and-django-bulk-index
+
+# Install elasticsearch python client
+# pip install elasticsearch
