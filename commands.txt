@@ -5,3 +5,8 @@ python manage.py migrate
 
 # Create super user
 python manage.py createsuperuser
+
+# Install django-extensions
+# https://github.com/django-extensions/django-extensions
+pip install django-extensions
+
