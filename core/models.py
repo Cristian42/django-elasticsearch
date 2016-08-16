@@ -1,11 +1,13 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-
+from django.conf import settings
 import django.db.models.options as options
+
 options.DEFAULT_NAMES = options.DEFAULT_NAMES + (
     'es_index_name', 'es_type_name', 'es_mapping'
 )
 
+es_client = settings.ES_CLIENT
 
 class University(models.Model):
     name = models.CharField(max_length=255, unique=True)
@@ -91,3 +93,39 @@ class Student(models.Model):
         if not self.courses.exists():
             return []
         return [c.name for c in self.courses.all()]
+
+
+    def save(self, *args, **kwargs):
+        is_new = self.pk
+        super(Student, self).save(*args, **kwargs)
+        payload = self.es_repr()
+        if is_new is not None:
+            del payload['_id']
+            es_client.update(
+                index=self._meta.es_index_name,
+                doc_type=self._meta.es_type_name,
+                id=self.pk,
+                refresh=True,
+                body={
+                    'doc': payload
+                }
+            )
+        else:
+            es_client.create(
+                index=self._meta.es_index_name,
+                doc_type=self._meta.es_type_name,
+                id=self.pk,
+                refresh=True,
+                body={
+                    'doc': payload
+                }
+            )
+    def delete(self, *args, **kwargs):
+        prev_pk = self.pk
+        super(Student, self).delete(*args, **kwargs)
+        es_client.delete(
+            index=self._meta.es_index_name,
+            doc_type=self._meta.es_type_name,
+            id=prev_pk,
+            refresh=True,
+        )
