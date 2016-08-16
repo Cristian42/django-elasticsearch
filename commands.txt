@@ -10,3 +10,9 @@ python manage.py createsuperuser
 # https://github.com/django-extensions/django-extensions
 pip install django-extensions
 
+
+## Part 2: Create dummy data via django-extensions command
+# https://qbox.io/blog/elasticsearch-python-django-database
+
+# Create command
+python manage.py create_command core
