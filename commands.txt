@@ -34,3 +34,8 @@ python manage.py dummy-data 10000
 
 # Install elasticsearch python client
 # pip install elasticsearch
+
+# Push data to elasticsearch index
+# Check: _all.primaries.docs.count at http://localhost:9200/django/_stats
+python manage.py push-to-index
+
