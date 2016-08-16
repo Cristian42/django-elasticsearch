@@ -1,0 +1,8 @@
+Django==1.10
+django-extensions==1.7.2
+elasticsearch==2.3.0
+model-mommy==1.2.6
+names==0.3.0
+requests==2.11.0
+six==1.10.0
+urllib3==1.16
