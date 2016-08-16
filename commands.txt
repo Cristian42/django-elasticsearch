@@ -20,3 +20,11 @@ python manage.py create_command core
 # Install model_mommy and names
 pip install model_mommy
 pip install names
+
+# Create dummy data: Add 10.000 students
+python manage.py dummy-data 10000
+
+# Check students:
+# python manage.py shell_plus
+# Student.objects.count()
+# 10000
