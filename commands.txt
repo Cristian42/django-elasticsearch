@@ -1,5 +1,14 @@
-# Apply models
+# Github: https://github.com/CommandrAvander/elasticsearch-django-tutorial
+# Part 1: https://qbox.io/blog/how-to-elasticsearch-python-django-part1
+# Part 2: https://qbox.io/blog/elasticsearch-python-django-database
+# Part 3: https://qbox.io/blog/elasticsearch-and-django-bulk-index
+# Part 4: https://qbox.io/blog/elasticsearch-python-django-frontend-queries
 
+
+## Part 1: Set up basic django app
+# https://qbox.io/blog/how-to-elasticsearch-python-django-part1
+
+# Apply models
 python manage.py makemigrations
 python manage.py migrate
 
@@ -39,3 +48,6 @@ python manage.py dummy-data 10000
 # Check: _all.primaries.docs.count at http://localhost:9200/django/_stats
 python manage.py push-to-index
 
+## Part 4: Add functional frontend items, write queries, allow the index to update
+## Add search with autocomplete
+# https://qbox.io/blog/elasticsearch-python-django-frontend-queries
